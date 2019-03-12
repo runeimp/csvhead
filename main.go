@@ -20,7 +20,7 @@ import (
 // CONSTANTS
 //
 const APP_NAME = "CSVhead"
-const APP_VERSION = "0.1.0"
+const APP_VERSION = "0.2.0"
 const CLI_NAME = "csvhead"
 
 //
@@ -37,7 +37,6 @@ var APP_LABEL string = fmt.Sprintf("%s v%s", APP_NAME, APP_VERSION)
 //
 var ARGC int
 var ARGV []string
-var output_debug bool = false
 var output_version bool = false
 var no_header_row bool = false
 var skip_lines int = 0
@@ -49,8 +48,6 @@ var head_limit int = -1
 
 func init() {
 	skip_lines_msg := "Specify the number of initial lines to skip (e.g. comments, copyright notices, empty rows)."
-
-	flag.BoolVar(&output_debug, "debug", false, "Output debug info.")
 	flag.BoolVar(&output_version, "version", false, "Output the version of this app.")
 	flag.IntVar(&skip_lines, "K", 0, skip_lines_msg)          // SKIP_LINES
 	flag.IntVar(&skip_lines, "skip-lines", 0, skip_lines_msg) // SKIP_LINES
@@ -59,7 +56,7 @@ func init() {
 	flag.Parse()
 
 	if output_version {
-		fmt.Printf("%s", APP_LABEL)
+		fmt.Printf("%s\n", APP_LABEL)
 		os.Exit(0)
 	}
 	ARGV = flag.Args()
