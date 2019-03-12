@@ -1,4 +1,4 @@
-CSVhead v0.1.0
+CSVhead v0.2.0
 ==============
 
 POSIX head for tablular data inspired by [csvkit][].
