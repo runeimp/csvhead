@@ -62,6 +62,11 @@ run +args='':
 	go run main.go {{args}}
 
 
+test +args='':
+	just _term-wipe
+	cat example.csv | go run main.go {{args}}
+
+
 # Set Terminal Title
 _term-title title='':
 	@printf "\033]0;%s\007" "{{title}}"
