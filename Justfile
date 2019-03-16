@@ -14,10 +14,16 @@ ZIP_NAME="CSVhead"
 
 # Build App
 build +args='':
+	#!/bin/sh
 	just _term-wipe
-	go build -o {{CLI_NAME}} main.go {{args}}
-	@# GOOS=windows GOARCH=amd64 go build -o {{CLI_NAME}}.exe main.go {{args}}
-	ls -Ahl {{CLI_NAME}}*
+	if [ '{{os()}}' = 'windows' ]; then
+		bin_file={{CLI_NAME}}.exe
+	else
+		bin_file={{CLI_NAME}}
+	fi
+	go build -o "${bin_file}" main.go {{args}}
+	mv "${bin_file}" "${GOBIN}/"
+	ls -hl "${GOBIN}/{{CLI_NAME}}"*
 
 
 # Create a Zip file based on a directory
