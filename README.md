@@ -1,4 +1,4 @@
-CSVhead v0.3.0
+CSVhead v0.4.0
 ==============
 
 POSIX head for tablular data inspired by [csvkit][].
@@ -7,18 +7,26 @@ Written in Go. I love Python. But I prefere distributing binaries with no depend
 
 ```bash
 $ csvhead -h
-CSVhead v0.3.0
+CSVhead v0.4.0
 
 POSIX head utility for tabular data
 
+USAGE: csvhead [OPTIONS] file1 file2...
+
 OPTIONS:
- -n COUNT        Number of lines to output
+ -n COUNT | --lines COUNT
+                 Number of lines to output
  -COUNT          Shortcut for -n
- -c COUNT        Number of characters or bytes to output
+ -CountOptions   Count is a decimal number optionally followed by a size letter ('b', 'k', 'm' for blocks, Kilobytes or Megabytes), or 'l' to mean count by lines, or other option letters ('cqv').
+ -c COUNT | --bytes COUNT
+                 Number of characters to output
  -h | --help     Output this help info
  -K COUNT | --skip-lines COUNT
                  Specify the number of lines to skip (e.g. comments, copyright notices, empty rows).
- -v | --version  Output the version number of this app
+ -q | --quiet | --silent
+                 Never print file name headers.
+ -v | --verbose  Always print file name headers.
+ -V | --version  Output the version number of this app
 
 This tool was inspired by and is designed to work along with csvkit and similar tools.
 
@@ -56,13 +64,13 @@ And here with `-K` and `--skip-lines` implimenting part of the common arguments 
 
 ### ToDo
 
-* [ ] Allow reading of CSV files specified as an argument to csvhead. Not just stdin.
-* [ ] Better GNU head compatibility. [bash head](https://ss64.com/bash/head.html)
-	* [ ] `-CountOptions AKA -3m for 3 megabytes of output`
-	* [ ] `--bytes=BYTES` GNU counterpart to `-c COUNT`
-	* [ ] `--lines=COUNT` GNU counterpart to `-n COUNT`
-	* [ ] `-q, --quiet, --silent`
-	* [ ] `-v, --verbose`
+* [x] Allow reading of CSV files specified as an argument to csvhead. Not just stdin.
+* [x] Better GNU head compatibility. [bash head](https://ss64.com/bash/head.html)
+	* [x] `-CountOptions AKA -3m for 3 megabytes of output`
+	* [x] `--bytes=BYTES` GNU counterpart to `-c COUNT`
+	* [x] `--lines=COUNT` GNU counterpart to `-n COUNT`
+	* [x] `-q, --quiet, --silent`
+	* [x] `-v, --verbose`
 * [ ] Implement the rest of the [csvkit][] common arguments
 	* [ ] `-d DELIMITER, --delimiter DELIMITER`
 	* [ ] `-t, --tabs`
@@ -79,15 +87,11 @@ And here with `-K` and `--skip-lines` implimenting part of the common arguments 
 	* [ ] `--datetime-format DATETIME_FORMAT`
 	* [ ] `-H, --no-header-row`
 	* [x] `-K SKIP_LINES, --skip-lines SKIP_LINES`
-	* [ ] `-v, --verbose`
+	* [ ] `-v, --verbose` (not applicable?)
 	* [ ] `-l, --linenumbers`
 	* [ ] `--zero`
 	* [x] `-V, --version`
 
-
-mlkit
-triangle
-serveit
 
 
 
