@@ -14,7 +14,7 @@ POSIX head utility for tabular data
 OPTIONS:
  -n COUNT        Number of lines to output
  -COUNT          Shortcut for -n
- -c COUNT        Number of characters to output
+ -c COUNT        Number of characters or bytes to output
  -h | --help     Output this help info
  -K COUNT | --skip-lines COUNT
                  Specify the number of lines to skip (e.g. comments, copyright notices, empty rows).
@@ -57,6 +57,12 @@ And here with `-K` and `--skip-lines` implimenting part of the common arguments 
 ### ToDo
 
 * [ ] Allow reading of CSV files specified as an argument to csvhead. Not just stdin.
+* [ ] Better GNU head compatibility. [bash head](https://ss64.com/bash/head.html)
+	* [ ] `-CountOptions AKA -3m for 3 megabytes of output`
+	* [ ] `--bytes=BYTES` GNU counterpart to `-c COUNT`
+	* [ ] `--lines=COUNT` GNU counterpart to `-n COUNT`
+	* [ ] `-q, --quiet, --silent`
+	* [ ] `-v, --verbose`
 * [ ] Implement the rest of the [csvkit][] common arguments
 	* [ ] `-d DELIMITER, --delimiter DELIMITER`
 	* [ ] `-t, --tabs`
@@ -79,7 +85,9 @@ And here with `-K` and `--skip-lines` implimenting part of the common arguments 
 	* [x] `-V, --version`
 
 
-
+mlkit
+triangle
+serveit
 
 
 
